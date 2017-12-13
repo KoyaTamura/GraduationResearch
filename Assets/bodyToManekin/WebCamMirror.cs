@@ -8,6 +8,7 @@ public class WebCamMirror : MonoBehaviour
 
     private WebCamTexture webcamtex;
     public Quaternion direction;
+    public int webcamnum = 0;
 
     // Use this for initialization
     void Start()
@@ -16,7 +17,7 @@ public class WebCamMirror : MonoBehaviour
         WebCamDevice[] devices = WebCamTexture.devices;
 
 
-        webcamtex = new WebCamTexture(devices[1].name);
+        webcamtex = new WebCamTexture(devices[webcamnum].name);
 
         Renderer rend = GetComponent<Renderer>();
         rend.material.mainTexture = webcamtex;

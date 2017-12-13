@@ -12,7 +12,8 @@ public class VideoPlayScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mPlayer = GetComponent <VideoPlayer> ();
-		mPlayer.Stop ();
+		mPlayer.Play ();
+        mPlayer.Pause();
 	}
 		
 

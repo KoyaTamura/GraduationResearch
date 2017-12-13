@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.VR;
 
 public class liveSphereChromaKey : MonoBehaviour {
 
