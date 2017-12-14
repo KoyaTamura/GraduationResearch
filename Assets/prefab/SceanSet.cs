@@ -13,7 +13,7 @@ public class SceanSet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Alpha0)) {
-			SceneManager.LoadScene ("BodyToManekin");
+			SceneManager.LoadScene ("Prior_preparation");
 		}else if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			SceneManager.LoadScene ("ChromaKeyMirror");
 		}else if (Input.GetKeyDown (KeyCode.Alpha2)) {
