@@ -6,6 +6,7 @@
 		_Color ("DetectionColor", Color) = (0, 0, 0, 1)
 		_Threshold ("Threshold", float) = 0.015
         _Contrast("Contrast", Range(0, 20))=9.99
+		_SphereAlf ("SphereAlf", float) = 1
 	}
 	SubShader
 	{
@@ -48,6 +49,7 @@
 			sampler2D _MainTex;
 			fixed4 _Color;
 			float _Threshold;
+			float _SphereAlf;
             float _Contrast;
 
 			fixed4 frag (v2f i) : SV_Target
@@ -70,6 +72,7 @@
 					c = fixed4(1.0,1.0,1.0,0.0);
 				}else{
 					c = camCol;
+					c.a = _SphereAlf;
 				}
 
 				return c;
