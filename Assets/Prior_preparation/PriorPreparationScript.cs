@@ -90,12 +90,17 @@ public class PriorPreparationScript : MonoBehaviour {
 		if (0.4f <= direction [0] && direction [0] < 0.50f) {
 			isUpHead = true;
 			if(isAlf == false && isChange){
-				DOTween.To(() => SphereAlf, x => SphereAlf = x, 0, 2f);
+				DOTween.To(() => SphereAlf, x => SphereAlf = x, 0, 2f).OnComplete(() => {
+                    SphereWebCam.Pause();
+                    MirrorWebCam.Pause();
+                }); 
 				LiveMirror.SetActive (false);
 				SphereMovie.Play ();
 				MirrorMovie.Play ();
 				isAlf = true;
 			}else if(isAlf == true && isChange){
+                SphereWebCam.Play();
+                MirrorWebCam.Play();
 				DOTween.To(() => SphereAlf, x => SphereAlf = x, 1, 2f);
 				LiveMirror.SetActive (true);
 				SphereMovie.Pause ();
