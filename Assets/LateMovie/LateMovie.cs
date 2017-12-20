@@ -35,16 +35,19 @@ public class LateMovie : MonoBehaviour {
 	void Start () {
 
 		WebCamInit ();
-		//Application.targetFrameRate = fps; //FPS設定
+        UnityEngine.VR.VRSettings.showDeviceView = false;
+        //Application.targetFrameRate = fps; //FPS設定
 
-	}
+    }
 		
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        keyCont(); //key操作の関数
 
-		//最初の一回で代入先のtextureを初期化
-		if(webcamTexture.width > 16 && webcamTexture.height > 16 && webcamIsPlaying){
+        //最初の一回で代入先のtextureを初期化
+        if (webcamTexture.width > 16 && webcamTexture.height > 16 && webcamIsPlaying){
 			SetTextureInit ();
 			webcamIsPlaying = false;
 		}
@@ -128,5 +131,55 @@ public class LateMovie : MonoBehaviour {
 		setTexture.SetPixels (textureArray.GetPixels (i));
 		setTexture.Apply ();
 	}
-		
+
+
+    void keyCont()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector3 mirrorPos = transform.position;
+            mirrorPos.x = mirrorPos.x + 0.02f;
+            transform.position = mirrorPos;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 mirrorPos = transform.position;
+            mirrorPos.x = mirrorPos.x - 0.02f;
+            transform.position = mirrorPos;
+
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Vector3 mirrorPos = transform.position;
+            mirrorPos.y = mirrorPos.y + 0.02f;
+            transform.position = mirrorPos;
+
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Vector3 mirrorPos = transform.position;
+            mirrorPos.y = mirrorPos.y - 0.02f;
+            transform.position = mirrorPos;
+
+        }
+        else if (Input.GetKey(KeyCode.R))
+        {
+            transform.Rotate(new Vector3(0f, 0f, 1f));
+
+        }
+        else if (Input.GetKey(KeyCode.L))
+        {
+            transform.Rotate(new Vector3(0f, 0f, -1f));
+        }
+        else if (Input.GetKey(KeyCode.U))
+        {
+            transform.Rotate(new Vector3(1f, 0f, 0f));
+
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.Rotate(new Vector3(-1f, 0f, 0f));
+        }
+
+    }
 }
