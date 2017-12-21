@@ -68,7 +68,7 @@
 
 				float dist = c.r;
 
-				if (dist <= _Threshold && i.uv.x >= 0.4 && i.uv.x <=0.58 && i.uv.y >= 0.41 && i.uv.y <=0.61) {
+				if (dist <= _Threshold && i.uv.x >= 0.4 && i.uv.x <=0.58 && i.uv.y >= 0.32 && i.uv.y <=0.61) {
 					c = fixed4(1.0,1.0,1.0,0.0);
 				}else{
 					c = camCol;

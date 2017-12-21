@@ -28,7 +28,8 @@ public class LateMovie : MonoBehaviour {
 	private int GoBack;
 	private float fixTime;
 
-
+    //このミラーをインスペクターから探す
+    public GameObject Mirror;
 
 
 	// Use this for initialization
@@ -137,48 +138,48 @@ public class LateMovie : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            Vector3 mirrorPos = transform.position;
+            Vector3 mirrorPos =Mirror. transform.position;
             mirrorPos.x = mirrorPos.x + 0.02f;
-            transform.position = mirrorPos;
+            Mirror.transform.position = mirrorPos;
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Vector3 mirrorPos = transform.position;
+            Vector3 mirrorPos = Mirror.transform.position;
             mirrorPos.x = mirrorPos.x - 0.02f;
-            transform.position = mirrorPos;
+            Mirror.transform.position = mirrorPos;
 
         }
         else if (Input.GetKey(KeyCode.UpArrow))
         {
-            Vector3 mirrorPos = transform.position;
+            Vector3 mirrorPos = Mirror.transform.position;
             mirrorPos.y = mirrorPos.y + 0.02f;
-            transform.position = mirrorPos;
+            Mirror.transform.position = mirrorPos;
 
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            Vector3 mirrorPos = transform.position;
+            Vector3 mirrorPos = Mirror.transform.position;
             mirrorPos.y = mirrorPos.y - 0.02f;
-            transform.position = mirrorPos;
+            Mirror.transform.position = mirrorPos;
 
         }
         else if (Input.GetKey(KeyCode.R))
         {
-            transform.Rotate(new Vector3(0f, 0f, 1f));
+            Mirror.transform.Rotate(new Vector3(0f, 0f, 1f));
 
         }
         else if (Input.GetKey(KeyCode.L))
         {
-            transform.Rotate(new Vector3(0f, 0f, -1f));
+            Mirror.transform.Rotate(new Vector3(0f, 0f, -1f));
         }
         else if (Input.GetKey(KeyCode.U))
         {
-            transform.Rotate(new Vector3(1f, 0f, 0f));
+            Mirror.transform.Rotate(new Vector3(1f, 0f, 0f));
 
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.Rotate(new Vector3(-1f, 0f, 0f));
+            Mirror.transform.Rotate(new Vector3(-1f, 0f, 0f));
         }
 
     }

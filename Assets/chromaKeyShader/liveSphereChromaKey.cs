@@ -37,6 +37,6 @@ public class liveSphereChromaKey : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }

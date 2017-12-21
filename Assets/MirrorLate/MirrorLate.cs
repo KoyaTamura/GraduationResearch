@@ -30,7 +30,8 @@ public class MirrorLate : MonoBehaviour
     private int GoBack;
     private float fixTime;
 
-
+    //ミラーを選択して放り込む
+    public GameObject Mirror;
 
 
     // Use this for initialization
@@ -38,7 +39,7 @@ public class MirrorLate : MonoBehaviour
     {
 
         WebCamInit();
-        //Application.targetFrameRate = fps; //FPS設定
+        Application.targetFrameRate = fps-10; //FPS設定
 
     }
 
@@ -46,6 +47,7 @@ public class MirrorLate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        keyCont();
 
         //最初の一回で代入先のtextureを初期化
         if (webcamTexture.width > 16 && webcamTexture.height > 16 && webcamIsPlaying)
@@ -65,8 +67,6 @@ public class MirrorLate : MonoBehaviour
             }
 
             textureArray.SetPixels(webcamTexture.GetPixels(), Time.frameCount % (lateSec * fps));
-            //setTexture.SetPixels(textureArray.GetPixels(Time.frameCount % (lateSec * fps)));
-            //setTexture.Apply();
             StartCoroutine("realTimeMovie", Time.frameCount % (fps * lateSec));
 
         }
@@ -94,7 +94,7 @@ public class MirrorLate : MonoBehaviour
         WebCamDevice[] devices = WebCamTexture.devices;
         if (devices.Length > camNum)
         {
-            webcamTexture = new WebCamTexture(devices[camNum].name, width, height, fps);
+            webcamTexture = new WebCamTexture(devices[camNum].name, width, height, 15);
             webcamTexture.Play();
         }
         else
@@ -150,6 +150,54 @@ public class MirrorLate : MonoBehaviour
         setTexture.SetPixels(textureArray.GetPixels(i));
         setTexture.Apply();
     }
+    void keyCont()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector3 mirrorPos = Mirror.transform.position;
+            mirrorPos.x = mirrorPos.x + 0.02f;
+            Mirror.transform.position = mirrorPos;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 mirrorPos = Mirror.transform.position;
+            mirrorPos.x = mirrorPos.x - 0.02f;
+            Mirror.transform.position = mirrorPos;
 
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Vector3 mirrorPos = Mirror.transform.position;
+            mirrorPos.y = mirrorPos.y + 0.02f;
+            Mirror.transform.position = mirrorPos;
+
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Vector3 mirrorPos = Mirror.transform.position;
+            mirrorPos.y = mirrorPos.y - 0.02f;
+            Mirror.transform.position = mirrorPos;
+
+        }
+        else if (Input.GetKey(KeyCode.R))
+        {
+            Mirror.transform.Rotate(new Vector3(0f, 0f, 1f));
+
+        }
+        else if (Input.GetKey(KeyCode.L))
+        {
+            Mirror.transform.Rotate(new Vector3(0f, 0f, -1f));
+        }
+        else if (Input.GetKey(KeyCode.U))
+        {
+            Mirror.transform.Rotate(new Vector3(1f, 0f, 0f));
+
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            Mirror.transform.Rotate(new Vector3(-1f, 0f, 0f));
+        }
+
+    }
 }
 
